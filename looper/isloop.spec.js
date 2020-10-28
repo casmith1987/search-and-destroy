@@ -1,7 +1,7 @@
 'use strict';
 const {expect} = require('chai');
 const LinkedList = require('./linkedlist');
-const isLoop = require('./isloop');
+const {isLoop, findLoop} = require('./isloop');
 
 const numbers = [1,2,3,4,5,6,7,8,9,10];
 const letters = ['a','b','c','d','e','f','g','h','i'];
@@ -36,3 +36,17 @@ describe('isLoop function', () => {
 		expect(isLoop(test3)).to.equal(false);
 	});
 });
+
+describe('findLoop funciton', () => {
+
+	it('returns Node value where loop begins', () => {
+		expect(findLoop(test1)).to.equal(test1.getNthNode(3));
+		expect(findLoop(test2)).to.equal(test2.getNthNode(1));
+	});
+
+	it('returns null if linkedList does not have a loop', () => {
+		expect(findLoop(test3)).to.equal(null);
+	});
+
+
+})

@@ -6,7 +6,7 @@ const binarySearch = (array, target) => {
 	while(array.length){
 		let midPoint = Math.floor(array.length / 2)
 
-		// midepoint/2 if right right side: (+ midpoint)
+		// midpoint/2 if right right side: (+ midpoint)
 
 		//compare to target
 		if(array[midPoint] === target){
