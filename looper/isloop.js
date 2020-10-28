@@ -2,18 +2,17 @@
 
 //Complete this algo
 const isLoop = (linkedList) => {
-  let fastRunner = linkedList.head.next;
-  let slowRunner = linkedList.head;
+  let hare = linkedList.head.next;
+  let turtle = linkedList.head;
 
-  
-  while(fastRunner && slowRunner){
-    fastRunner = fastRunner.next;
-    if(fastRunner === slowRunner) return true
-    fastRunner = fastRunner.next;
-    slowRunner = slowRunner.next;
+  while (hare && turtle) {
+    hare = hare.next;
+    if (hare === turtle) return true;
+    hare = hare.next;
+    turtle = turtle.next;
   }
 
-  return false
+  return false;
 };
 
 //Rules:
@@ -31,27 +30,26 @@ Remember to write some test specs too!
 */
 
 const findLoop = (linkedList) => {
-  if(!isLoop(linkedList)) return null
+  if (!isLoop(linkedList)) return null;
 
   let index = 0;
-  const listIndexer = {}
+  const listIndexer = {};
   let runner = linkedList.head;
 
-  while(true){
-    if(Object.values(listIndexer).includes(runner)){
-      return runner
+  while (true) {
+    if (Object.values(listIndexer).includes(runner)) {
+      return runner;
     }
     listIndexer[index] = runner;
     index++;
     runner = runner.next;
   }
-}
-
+};
 
 module.exports = {
   isLoop,
-  findLoop
-}
+  findLoop,
+};
 
 //[1, 2, 3, 4, 5, 6]
 //       ^  ^
